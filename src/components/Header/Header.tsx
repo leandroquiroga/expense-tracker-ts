@@ -1,12 +1,9 @@
-import { useContext } from "react";
+import { useGlobalState} from "../../hooks/useGlobalState.ts";
 import { container, container_img, container_text_name } from "./header.css.ts";
-
-import logoHeader from '/public/icon-app.svg';
-import { GlobalContext } from "../../context/GlobalContext.ts";
+import logoHeader from '/icon-app.svg';
 
 export const Header = () => {
-
-  const { name } = useContext(GlobalContext);
+  const { name } = useGlobalState();
 
   return (
     <nav className={`${container}`}>

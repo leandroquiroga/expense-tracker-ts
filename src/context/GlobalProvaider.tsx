@@ -1,14 +1,19 @@
-import { GlobalProps } from "../interfaces";
 import { GlobalContext } from "./GlobalContext"
+import { GlobalProps } from "../interfaces";
+import { useReducer } from "react";
+import { globalReducer } from ".";
+import { INITIAL_STATE } from "./globalReducer";
 
 export const GlobalProvaider = ({ children }: GlobalProps): JSX.Element => {
+  const [ state ] = useReducer(globalReducer, INITIAL_STATE);
+  
   return (
     <GlobalContext.Provider
-      value={{ 
-        name: 'Leandro'
-      }}
-    >
+      value={{
+        transactions: state.transactions,
+        name: state.name
+      }}>
       {children}
     </GlobalContext.Provider>
-  )
+  );
 };
