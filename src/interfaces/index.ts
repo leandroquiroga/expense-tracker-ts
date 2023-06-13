@@ -34,3 +34,10 @@ export interface ButtonProps {
   type: 'submit' | 'reset'
   style?: string
 }
+export interface OptionProps {
+  data: string[];
+  name: string;
+  styles?: string;
+  label: string;
+  [x: string]: any;
+}
