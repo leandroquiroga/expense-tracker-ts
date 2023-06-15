@@ -1,20 +1,24 @@
-import { ReactElement } from "react";
+import { ChangeEvent, Dispatch, ReactElement, SetStateAction } from "react";
 export interface GlobalContextProps {
   name: string;
-  transactions: [];
+  transactions: Transactions[];
+  selectOthers: boolean;
+  handleToggle: (e: ChangeEvent<HTMLSelectElement>) => void;
+  newTransaction: ({ description, mount, options }: Transactions) => void;
+  selectedValue: string;
+  setSelectedValue: Dispatch<SetStateAction<string>>;
 }
-
 export interface GlobalProps {
   children: JSX.Element | JSX.Element[]
 }
 
 export type GlobalActions =
-  | { type: 'setNameUser', payload: string }
-  | { type: 'ADD_TRANSACTIONS', payload: [] };
+  | { type: "setNameUser"; payload: string }
+  | { type: "ADD_TRANSACTIONS"; payload: Transactions };
   
 export interface GlobalState {
   name: string;
-  transactions: [];
+  transactions: Transactions[];
 }
 
 export interface InputProps {
@@ -40,4 +44,11 @@ export interface OptionProps {
   styles?: string;
   label: string;
   [x: string]: any;
+}
+
+export interface Transactions {
+  id?: string;
+  description: string;
+  mount: number;
+  options: string;
 }
