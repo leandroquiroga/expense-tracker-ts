@@ -1,6 +1,5 @@
 import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
-import { ChangeEvent } from 'react';
 
 import { arrayOptions } from "../../utilities";
 import { Button } from "./Button";
@@ -24,11 +23,12 @@ const valueFormComponent: InitialValue = {
   other: ""
 };
 
-//TODO: Verificar el problema de el ERROR en el input cuando quiero escribir sobre el. 
-
 export const FormComponent = (): JSX.Element => {
-  const { newTransaction, selectOthers } = useGlobalState();
-  
+  const { newTransaction, selectOthers, setSelectOthers} = useGlobalState();
+
+  // Resetea el valor del selectOthers, lo cambia a false ya que reseteamos el formulario
+  const handleResetSelectOthers = () => setSelectOthers(false);
+
   return (
     <Formik
       initialValues={valueFormComponent}
@@ -59,15 +59,14 @@ export const FormComponent = (): JSX.Element => {
             label="Seleccione una opcion"
           />
 
-          {
-            selectOthers && (
-              <InputLabel
-                styles={`${container_input}`}
-                label="Opcion alternativa"
-                name="others"
-                type="text"
-                placeholder="Describa la opcion alternativa"
-              />
+          {selectOthers && (
+            <InputLabel
+              styles={`${container_input}`}
+              label="Opcion alternativa"
+              name="others"
+              type="text"
+              placeholder="Describa la opcion alternativa"
+            />
           )}
 
           <section className={`${container_button}`}>
@@ -76,7 +75,12 @@ export const FormComponent = (): JSX.Element => {
               value="Agregar Monto"
               style={`${button_styles}`}
             />
-            <Button type="reset" value="Resetear" style={`${button_styles}`} />
+            <Button
+              action={handleResetSelectOthers}
+              type="reset"
+              value="Resetear"
+              style={`${button_styles}`}
+            />
           </section>
         </Form>
       )}

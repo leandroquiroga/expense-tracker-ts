@@ -3,9 +3,10 @@ export interface GlobalContextProps {
   name: string;
   transactions: Transactions[];
   selectOthers: boolean;
-  handleToggle: (e: ChangeEvent<HTMLSelectElement>) => void;
-  newTransaction: ({ description, mount, options }: Transactions) => void;
   selectedValue: string;
+  newTransaction: ({ description, mount, options }: Transactions) => void;
+  handleToggle: (e: ChangeEvent<HTMLSelectElement>) => void;
+  setSelectOthers: Dispatch<SetStateAction<boolean>>;
   setSelectedValue: Dispatch<SetStateAction<string>>;
 }
 export interface GlobalProps {
@@ -24,19 +25,21 @@ export interface GlobalState {
 export interface InputProps {
   label: string;
   name: string;
-  type: 'text' | 'number';
+  type: "text" | "number";
   placeholder?: string;
   styles?: string;
   steps?: string;
   errorTitle?: string;
+  action?: (e: ChangeEvent<HTMLSelectElement>) => void;
   [x: string]: any;
 }
 
 export interface ButtonProps {
   children?: ReactElement | ReactElement[];
   value: string;
-  type: 'submit' | 'reset'
-  style?: string
+  type: "submit" | "reset" | "button";
+  style?: string;
+  action?: () => void;
 }
 export interface OptionProps {
   data: string[];

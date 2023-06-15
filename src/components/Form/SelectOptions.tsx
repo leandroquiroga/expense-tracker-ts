@@ -6,8 +6,7 @@ import { useGlobalState } from "../../hooks/useGlobalState";
 
 export const SelectOptions = ({ data, styles, label, ...props }: OptionProps): JSX.Element => {
   const [field, meta] = useField(props);
-  const { handleToggle, selectedValue } = useGlobalState();
-  
+  const { handleToggle } = useGlobalState();
   
   return (
     <section className={`${container_select}`}>
@@ -16,8 +15,13 @@ export const SelectOptions = ({ data, styles, label, ...props }: OptionProps): J
         {...props}
         {...field}
         className={styles}
-        onChange={handleToggle}
-        value={selectedValue}>
+        onChange={(e) => {
+          handleToggle(e);
+          // Utilizamos el atributo value con el campo de Fomik
+          field.onChange(e);
+        }}
+        // Actualizamos el estado con el valor del objeto field.value de Formik
+        value={field.value}>
         {data.map((e: string, i: number) => (
           <option value={e} key={i}>
             {e}

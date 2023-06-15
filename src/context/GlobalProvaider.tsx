@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useReducer, useState } from "react";
+import { ChangeEvent, useReducer, useState } from "react";
 import { v4 as uuidv4} from 'uuid'
 
 import { GlobalContext } from "./GlobalContext"
@@ -42,6 +42,7 @@ export const GlobalProvaider = ({ children }: GlobalProps): JSX.Element => {
         setSelectedValue,
         handleToggle,
         newTransaction,
+        setSelectOthers,
       }}>
       {children}
     </GlobalContext.Provider>
