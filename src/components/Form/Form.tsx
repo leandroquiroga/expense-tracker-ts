@@ -1,31 +1,39 @@
-import { Button } from "./Button";
-import { InputLabel } from "./InputLabel";
-import { Form, Formik } from 'formik';
-import { SelectOptions } from "./SelectOptions";
-import { arrayOptions } from "../../utilities";
-import { button_styles, container_button, container_form, container_input, select_styles } from "./Form.css";
-import { validationForm } from '../../utilities/index';
 import * as Yup from 'yup';
+import { Form, Formik } from 'formik';
+import { ChangeEvent } from 'react';
+
+import { arrayOptions } from "../../utilities";
+import { Button } from "./Button";
+import { button_styles, container_button, container_form, container_input, select_styles } from "./Form.css";
+import { InputLabel } from "./InputLabel";
+import { SelectOptions } from "./SelectOptions";
+import { useGlobalState } from "../../hooks/useGlobalState";
+import { validationForm } from '../../utilities/index';
 
 type InitialValue = {
   description: string;
   mount: number;
   options: string
+  other?: string;
 };
 
 const valueFormComponent: InitialValue = {
   description: "",
   mount: 0,
-  options: ""
+  options: "",
+  other: ""
 };
 
+//TODO: Verificar el problema de el ERROR en el input cuando quiero escribir sobre el. 
+
 export const FormComponent = (): JSX.Element => {
+  const { newTransaction, selectOthers } = useGlobalState();
+  
   return (
     <Formik
       initialValues={valueFormComponent}
-      onSubmit={(values) => console.log(values)}
-      validationSchema={Yup.object(validationForm)}
-    >
+      onSubmit={(values) => newTransaction(values)}
+      validationSchema={Yup.object(validationForm)}>
       {() => (
         <Form className={`${container_form}`} noValidate>
           <InputLabel
@@ -50,6 +58,17 @@ export const FormComponent = (): JSX.Element => {
             styles={`${select_styles}`}
             label="Seleccione una opcion"
           />
+
+          {
+            selectOthers && (
+              <InputLabel
+                styles={`${container_input}`}
+                label="Opcion alternativa"
+                name="others"
+                type="text"
+                placeholder="Describa la opcion alternativa"
+              />
+          )}
 
           <section className={`${container_button}`}>
             <Button
