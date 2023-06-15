@@ -16,7 +16,10 @@ export const globalReducer = (state: GlobalState, action: GlobalActions): Global
     case 'ADD_TRANSACTIONS':
       return {
         ...state,
-        transactions: action.payload
+        transactions: [
+          ...state.transactions,
+          action.payload
+        ]
       }
     default: 
       return state
