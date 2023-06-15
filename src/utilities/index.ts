@@ -15,6 +15,7 @@ export const arrayOptions = [
 
 export const validationForm = {
   description: Yup.string()
+    .min(3, 'La descripcion debe tener al menos 3 caracteres')
     .matches(/^[a-zA-ZñÑ\s]+$/, {
       excludeEmptyString: true,
       message: "La descripciones deben ser solo texto",
