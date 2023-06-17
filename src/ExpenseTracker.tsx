@@ -1,15 +1,12 @@
+import { RouterProvider } from 'react-router-dom';
+
 import { GlobalProvaider } from './context';
-import { FormComponent, Header } from './components';
+import router from './router/index.router';
 
-import './index.css';
-
-export const ExpenseTracker = (): JSX.Element => {
-
+export const ExpenseTracker = () => {
   return (
     <GlobalProvaider>
-      <Header />
-      <FormComponent />
+      <RouterProvider router={router} fallbackElement={<p>Cargando ...</p>} />
     </GlobalProvaider>
   );
 }
-
