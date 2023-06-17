@@ -15,7 +15,7 @@ export interface GlobalProps {
 
 export type GlobalActions =
   | { type: "setNameUser"; payload: string }
-  | { type: "ADD_TRANSACTIONS"; payload: Transactions };
+  | { type: "ADD_TRANSACTIONS"; payload: Transactions }
   
 export interface GlobalState {
   name: string;
