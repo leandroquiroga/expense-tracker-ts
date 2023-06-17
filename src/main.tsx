@@ -1,6 +1,8 @@
-import React from 'react'
+import React from 'react';
 import ReactDOM from 'react-dom/client'
-import { ExpenseTracker } from './ExpenseTracker.tsx';
+
+import { ExpenseTracker } from './ExpenseTracker';
+
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
