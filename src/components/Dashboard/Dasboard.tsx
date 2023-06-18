@@ -1,21 +1,14 @@
-import { useGlobalState } from "../../hooks/useGlobalState";
+import { TransactionList } from "..";
+import { Title } from "../Title/Title";
 
 const Dasboard = () => {
-  const { transactions } = useGlobalState();
   return (
     <section>
-      <h1>
-        Dahsboard
-      </h1>
-      {
-        transactions.map(transaction => (
-          <article key={transaction.id}>
-            <h1>{transaction.description}</h1>
-            <p>${transaction.mount}</p>
-            <small>{transaction.options}</small>
-          </article>
-        ))
-      }
+      <Title
+        title="Bienvenido !"
+        subTitle="Este es tu dashboard"
+      />
+      <TransactionList />
     </section>
   );
 };
