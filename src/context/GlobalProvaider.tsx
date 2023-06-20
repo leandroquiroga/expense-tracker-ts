@@ -24,6 +24,11 @@ const GlobalProvaider = ({ children }: GlobalProps): JSX.Element => {
     setSelectedValue(e.target.value);
   };
 
+  // Elimina un ITEM del localStorege
+  const handleDeleteTransaction = (id: string) => {
+    dispatch({ type: "DELETE_TRANSACTIONS", payload: id });
+  }
+
   // Crea una nueva transaccion
   const newTransaction = ({ description, mount }: Transactions) => {
     data = {
@@ -47,6 +52,7 @@ const GlobalProvaider = ({ children }: GlobalProps): JSX.Element => {
         handleToggle,
         newTransaction,
         setSelectOthers,
+        handleDeleteTransaction,
       }}>
       {children}
     </GlobalContext.Provider>
