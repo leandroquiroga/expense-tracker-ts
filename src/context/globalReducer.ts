@@ -18,6 +18,12 @@ export const globalReducer = (state: GlobalState, action: GlobalActions): Global
         ...state,
         transactions: [...state.transactions, action.payload],
       };
+    
+    case "DELETE_TRANSACTIONS":
+      return {
+        ...state,
+        transactions: state.transactions.filter(transaction => transaction.id !== action.payload)
+      }
     default:
       return state;
   }
