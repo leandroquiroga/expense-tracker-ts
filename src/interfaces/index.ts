@@ -8,6 +8,7 @@ export interface GlobalContextProps {
   handleToggle: (e: ChangeEvent<HTMLSelectElement>) => void;
   setSelectOthers: Dispatch<SetStateAction<boolean>>;
   setSelectedValue: Dispatch<SetStateAction<string>>;
+  handleDeleteTransaction: (id: string ) => void;
 }
 export interface GlobalProps {
   children: JSX.Element | JSX.Element[]
@@ -16,6 +17,7 @@ export interface GlobalProps {
 export type GlobalActions =
   | { type: "setNameUser"; payload: string }
   | { type: "ADD_TRANSACTIONS"; payload: Transactions }
+  | { type: "DELETE_TRANSACTIONS", payload: string };
   
 export interface GlobalState {
   name: string;
