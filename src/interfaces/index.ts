@@ -4,11 +4,15 @@ export interface GlobalContextProps {
   transactions: Transactions[];
   selectOthers: boolean;
   selectedValue: string;
+  dateTime: string;
+  timeago: string;
+  totalAmount: number;
+  timeAgoUpdate: string;
   newTransaction: ({ description, mount, options }: Transactions) => void;
   handleToggle: (e: ChangeEvent<HTMLSelectElement>) => void;
   setSelectOthers: Dispatch<SetStateAction<boolean>>;
   setSelectedValue: Dispatch<SetStateAction<string>>;
-  handleDeleteTransaction: (id: string ) => void;
+  handleDeleteTransaction: (id: string) => void;
 }
 export interface GlobalProps {
   children: JSX.Element | JSX.Element[]
@@ -56,4 +60,19 @@ export interface Transactions {
   description: string;
   mount: number;
   options: string;
+}
+export interface ValueHookTimeAgo {
+  timestamp: number
+}
+
+export interface DATE_UNITS_Interfaces {
+  day: number;
+  hour: number;
+  minute: number;
+  second: number;
+}
+
+export interface GetUnitAndValueDate {
+  value: number;
+  unit: Intl.RelativeTimeFormatUnit | string;
 }
