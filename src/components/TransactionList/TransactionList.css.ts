@@ -14,10 +14,10 @@ export const card = style({
   justifyContent: "space-between",
   border: "1px solid #c3c4c7",
   boxShadow: "0px 2px 12px 0px #a2a2a3",
-  borderRadius: "15px",
+  borderRadius: "0px 15px 15px 0px",
   padding: "10px",
   width: "90%",
-  maxWidth: "1200px",
+  maxWidth: "768px",
   alignItems: "center",
 });
 
@@ -31,6 +31,17 @@ export const card_optional = style({
   justifyContent: "space-between",
   alignItems: "center",
 });
+
+export const card_amount_increment = style({
+  color: "#38c425",
+  fontWeight: "600"
+});
+
+export const card_amount_decrement = style({
+  color: '#FF0000',
+  fontWeight: "600"
+});
+
 export const button_close = style({
   border: "none",
   outline: "none",

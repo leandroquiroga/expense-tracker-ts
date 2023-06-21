@@ -1,5 +1,6 @@
 import { TransactionList } from "..";
 import { Title } from "../Title/Title";
+import { Balance } from "../TrasanctionBalance/Balance";
 
 const Dasboard = () => {
   return (
@@ -8,6 +9,7 @@ const Dasboard = () => {
         title="Bienvenido !"
         subTitle="Este es tu dashboard"
       />
+      <Balance />
       <TransactionList />
     </section>
   );
