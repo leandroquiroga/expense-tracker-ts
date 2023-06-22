@@ -9,16 +9,8 @@ export const container_balance = style({
   border: "1px solid #c3c4c7",
   padding: "10px",
   display: "flex",
-  justifyContent: "space-around",
+  justifyContent: "center",
   borderRadius: "8px",
-
-  '@media': {
-    'screen and (max-width: 768px)': {
-        flexDirection: "column", 
-        justifyContent: "center",
-        alignItems: "center"
-      }
-    }
 });
 
 export const balance_chart = style({

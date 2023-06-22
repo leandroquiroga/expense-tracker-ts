@@ -4,10 +4,8 @@ export interface GlobalContextProps {
   transactions: Transactions[];
   selectOthers: boolean;
   selectedValue: string;
-  dateTime: string;
-  timeago: string;
   totalAmount: number;
-  timeAgoUpdate: string;
+  categories: string[];
   newTransaction: ({ description, mount, options }: Transactions) => void;
   handleToggle: (e: ChangeEvent<HTMLSelectElement>) => void;
   setSelectOthers: Dispatch<SetStateAction<boolean>>;
@@ -74,5 +72,10 @@ export interface DATE_UNITS_Interfaces {
 
 export interface GetUnitAndValueDate {
   value: number;
-  unit: Intl.RelativeTimeFormatUnit | string;
+  unit: string | Intl.RelativeTimeFormatUnit ;
+}
+
+export interface SerialData {
+  value?: number;
+  name?: string;
 }
