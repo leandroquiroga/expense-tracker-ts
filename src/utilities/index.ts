@@ -49,13 +49,14 @@ export const getSecondsDiff = (timestaps: number): number => (Date.now() - times
 // donde la unidad por ejemplo si fueron 5 dias que han pasado devuelve en unit: dias y en el value: -5
 export const getUnitAndValueDate = (
   secondsElapsed: number
-): GetUnitAndValueDate | void => {
+): GetUnitAndValueDate => {
   for (const [unit, secondsInUnit] of Object.entries(DATE_UNITS)) {
     if (secondsElapsed >= secondsInUnit || unit === "second") {
       const value = Math.floor(secondsElapsed / secondsInUnit) * -1;
       return { value, unit };
     }
   }
+  throw new Error("No se encontró ningún valor adecuado."); // Lanzar un error si no se encuentra ninguna unidad adecuada
 };
 
 // Se encarga de formatear la fecha por ejemplo "Hace 5 dias"
@@ -63,6 +64,6 @@ export const getTimeAgo = (timestamp: any, locale: string): string => {
   const relativeTimeFormat = new Intl.RelativeTimeFormat(locale);
 
   const secondsElapsed = getSecondsDiff(timestamp);
-  const {value, unit} = getUnitAndValueDate(secondsElapsed);
+  const { value, unit } = getUnitAndValueDate(secondsElapsed);
   return relativeTimeFormat.format(value, unit);
 }
