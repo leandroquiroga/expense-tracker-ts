@@ -3,7 +3,7 @@ import { useGlobalState } from '../../hooks/useGlobalState';
 
 export const BalanceChart = () => {
 
-    const { categories } = useGlobalState();
+    const { categories, arrSerialData } = useGlobalState();
     const options = {
       title: {
         left: "10px",
@@ -17,7 +17,7 @@ export const BalanceChart = () => {
       },
       legend: {
         orient: "horizontal",
-        bottom: "0",
+        bottom: "-6px",
         data: categories,
       },
       series: [
@@ -26,15 +26,8 @@ export const BalanceChart = () => {
           type: "pie",
           radius: "80%",
           center: ["50%", "50%"],
-          data: [
-            { value: 335, name: "Sueldo" },
-            { value: 310, name: "Gastos Extas" },
-            { value: 234, name: "Inversiones" },
-            { value: 135, name: "Facturas" },
-            { value: 1548, name: "Gastos Personales" },
-            { value: 100, name: "Alimentos" },
-            { value: 530, name: "Otros" },
-          ],
+          data: arrSerialData,
+
           itemStyle: {
             borderRadius: 10,
             borderColor: "#fff",
