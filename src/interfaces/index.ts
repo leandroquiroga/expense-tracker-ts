@@ -6,6 +6,7 @@ export interface GlobalContextProps {
   selectedValue: string;
   totalAmount: number;
   categories: string[];
+  arrSerialData: SerialData[] | undefined;
   newTransaction: ({ description, mount, options }: Transactions) => void;
   handleToggle: (e: ChangeEvent<HTMLSelectElement>) => void;
   setSelectOthers: Dispatch<SetStateAction<boolean>>;
