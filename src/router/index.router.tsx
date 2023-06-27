@@ -1,8 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import { FormComponent, Header, PageNotFound } from '../components';
-// Moficar la ruta de importacion
-import Dasboard from '../components/Dashboard/Dasboard';
+import { FormComponent, Header, PageNotFound, Dasboard } from '../components';
 
 const router = createBrowserRouter([
   {    

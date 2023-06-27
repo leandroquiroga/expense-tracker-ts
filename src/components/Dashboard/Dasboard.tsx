@@ -1,16 +1,31 @@
-import { TransactionList } from "..";
-import { Title } from "../Title/Title";
-import { Balance } from "../TrasanctionBalance/Balance";
+import { useGlobalState } from "../../hooks/useGlobalState";
+import {
+  Balance,
+  LinkButton,
+  PageNotBalance,
+  Title,
+  TransactionList
+} from "../index";
 
 const Dasboard = () => {
+
+  const { transactions } = useGlobalState();
+
   return (
     <section>
       <Title
         title="Bienvenido !"
         subTitle="Este es tu dashboard"
       />
-      <Balance />
-      <TransactionList />
+      {
+        (transactions.length === 0)
+          ? <PageNotBalance />
+          : <>
+              <Balance />
+              <TransactionList />
+              <LinkButton/>
+            </>  
+      }
     </section>
   );
 };

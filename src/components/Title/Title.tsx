@@ -5,7 +5,7 @@ type TitleProps = {
   subTitle: string,
 };
 
-export const Title = ({ title, subTitle }: TitleProps) => {
+const Title = ({ title, subTitle }: TitleProps) => {
   return (
     <article className={`${container_title}`}>
       <h1 className={`${title_style}`}>{title}</h1>
@@ -13,3 +13,5 @@ export const Title = ({ title, subTitle }: TitleProps) => {
     </article>
   );
 };
+
+export default Title;

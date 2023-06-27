@@ -66,4 +66,38 @@ export const getTimeAgo = (timestamp: any, locale: string): string => {
   const secondsElapsed = getSecondsDiff(timestamp);
   const { value, unit } = getUnitAndValueDate(secondsElapsed);
   return relativeTimeFormat.format(value, unit);
-}
+};
+
+export const createSerialDataMap = (
+  serialDataMap: Map<string, number>,
+  options: string,
+  amount: number
+) => {
+  let amountTotal: number;
+
+  // Verificar si una propiedad se repite
+  if (serialDataMap.has(options)) {
+    // Si se repite - Verificar si el monto es negativo
+    if (amount < 0) {
+      // Sumar el monto negativo al total existente y asegurarse de que el valor final no sea menor que cero
+      amountTotal = Math.max(serialDataMap.get(options)! + amount, 0);
+      serialDataMap.set(options, amountTotal);
+    } else {
+      // Si es positivo, sumarlo al monto total
+      amountTotal = serialDataMap.get(options)! + amount;
+      serialDataMap.set(options, amountTotal);
+    }
+  } else {
+    // Si no se repite la propiedad - Verificar si el monto es negativo
+    if (amount < 0) {
+      // Convertir el monto negativo en positivo y asignarlo al monto total
+      amountTotal = Math.max(-amount, 0);
+      serialDataMap.set(options, amountTotal);
+    } else {
+      // Si es positivo, asignarlo al monto total
+      serialDataMap.set(options, amount);
+    }
+  }
+
+  return serialDataMap;
+};

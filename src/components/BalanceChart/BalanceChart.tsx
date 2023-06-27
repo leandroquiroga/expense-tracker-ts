@@ -24,7 +24,7 @@ export const BalanceChart = () => {
         {
           name: "Balance Total",
           type: "pie",
-          radius: "80%",
+          radius: "70%",
           center: ["50%", "50%"],
           data: arrSerialData,
 
