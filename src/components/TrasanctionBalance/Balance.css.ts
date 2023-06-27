@@ -15,6 +15,7 @@ export const container_balance = style({
 
 export const balance_chart = style({
   width: "100%",
+  margin: '10px auto'
 });
 
 export const balance_informacion = style({
