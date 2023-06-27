@@ -5,6 +5,7 @@ import { GlobalContext } from "./GlobalContext"
 import { GlobalProps, SerialData } from "../interfaces";
 import { INITIAL_STATE, globalReducer } from "./globalReducer";
 import { Transactions } from '../interfaces/index';
+import { createSerialDataMap } from "../utilities";
 
 let data: Transactions;
 
@@ -16,8 +17,6 @@ const GlobalProvaider = ({ children }: GlobalProps): JSX.Element => {
   const [totalAmount, setTotalAmount] = useState(0);
   const [categories, setCategories] = useState<string[]>([]);
   const [arrSerialData, setArrSerialData] = useState<SerialData[] | undefined>();
-
-
 
   // Seteamos el localStorge
   useEffect(() => {
@@ -34,36 +33,19 @@ const GlobalProvaider = ({ children }: GlobalProps): JSX.Element => {
     setArrSerialData(createSerialData());
   }, [state.transactions]);
 
-
-  // TODO: Moficar el codigo
-  
   const createSerialData = () => {
     const serialDataMap = new Map<string, number>();
+    let arrData = new Map<string, number>();
 
     // Recorre el arreglo de transacciones 
     for (const data of state.transactions) {
       const { mount, options } = data;
-      
-      //TODO: Controlar si serialData es undefined
-      // Verificamos si la option se repite
-      if (serialDataMap.has(options)) { 
-        const totalAmaout = serialDataMap.get(options)! + mount;
-        serialDataMap.set(options, totalAmaout);
-      } else {
-        serialDataMap.set(options, mount);
-      }
-
+      arrData = createSerialDataMap(serialDataMap, options, mount);
     }
-    const serialData  = Array.from(serialDataMap, ([name, value]) => ({
-      name,
-      value,
-    }));
+    const serialData = Array.from(arrData, ([name, value]) => ({ name, value, }));
     
-
     return serialData;
-  }
-
-
+  };
 
   // Cambia el estado del selectOthers
   const handleToggle = (e: ChangeEvent<HTMLSelectElement>) => {
