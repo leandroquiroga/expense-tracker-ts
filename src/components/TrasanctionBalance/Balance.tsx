@@ -8,7 +8,7 @@ import {
   container_balance
 } from "./Balance.css";
 
-export const Balance = () => {
+const Balance = () => {
   const { totalAmount } = useGlobalState();
   const { dateTime } = useTimeAgo(+new Date());
 
@@ -34,3 +34,5 @@ export const Balance = () => {
     </article>
   );
 }
+
+export default Balance;
