@@ -5,6 +5,9 @@ export const container_card = style({
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
+  width: "90%",
+  maxWidth: "768px",
+  margin: '0 auto'
 });
 
 
@@ -13,9 +16,9 @@ export const card = style({
   justifyContent: "space-between",
   border: "1px solid #c3c4c7",
   boxShadow: "0px 1px 8px 0px #a2a2a3",
-  borderRadius: "0px 15px 15px 0px",
+  borderRadius: "0px 5px 5px 0px",
   padding: "10px",
-  width: "80%",
+  width: "100%",
   maxWidth: "768px",
   alignItems: "center",
   margin: "5px auto",
@@ -25,6 +28,10 @@ export const card = style({
 export const card_description = style({
   width: "250px",
   textAlign: "left"
+});
+
+export const logo_delete_card = style({
+  width: '30px'
 })
 
 export const card_optional = style({
