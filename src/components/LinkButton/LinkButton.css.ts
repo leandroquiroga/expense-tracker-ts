@@ -4,7 +4,7 @@ import { style } from '@vanilla-extract/css';
 export const container_link = style({
   bottom: '20px',
   margin: '0 auto',
-  position: 'absolute',
+  position: 'fixed',
   right: '15px',
 })
 

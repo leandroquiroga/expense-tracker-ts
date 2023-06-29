@@ -28,20 +28,25 @@ export const BalanceChart = () => {
           center: ["50%", "50%"],
           data: arrSerialData,
 
-          itemStyle: {
-            borderRadius: 10,
-            borderColor: "#fff",
-            borderWidth: 2,
-            emphasis: {
-              shadowBlur: 10,
-              shadowOffsetX: 0,
-              shadowColor: "rgba(0, 0, 0, 0.5)",
+          emphasis: {
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowColor: "rgba(0, 0, 0, 0.5)",
+            borderRadius: 5,
+            itemStyle: {
+              borderRadius: 10,
+              borderColor: "#fff",
+              borderWidth: 2,
             },
           },
         },
       ],
     };
 
-  return <ReactECharts option={options} />;
+  return (
+    <ReactECharts
+      option={options}
+    />
+  )
 };
 
