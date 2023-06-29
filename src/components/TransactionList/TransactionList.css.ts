@@ -1,11 +1,10 @@
 import { style } from "@vanilla-extract/css";
 
 export const container_card = style({
-  display: "grid",
-  gridTemplateColumns: "repeat(1, 1fr)",
-  gap: "1rem",
-  placeContent: "center",
-  placeItems: "center"
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
 });
 
 
@@ -13,12 +12,14 @@ export const card = style({
   display: "flex",
   justifyContent: "space-between",
   border: "1px solid #c3c4c7",
-  boxShadow: "0px 2px 12px 0px #a2a2a3",
+  boxShadow: "0px 1px 8px 0px #a2a2a3",
   borderRadius: "0px 15px 15px 0px",
   padding: "10px",
-  width: "90%",
+  width: "80%",
   maxWidth: "768px",
   alignItems: "center",
+  margin: "5px auto",
+  cursor: "pointer"
 });
 
 export const card_description = style({
@@ -41,17 +42,3 @@ export const card_amount_decrement = style({
   color: '#FF0000',
   fontWeight: "600"
 });
-
-export const button_close = style({
-  border: "none",
-  outline: "none",
-  cursor: "pointer",
-  color: "#FF0000",
-  margin: "0 5px",
-  backgroundColor: "#FFF", 
-  fontWeight: "700",
-  fontSize: "0.9rem",
-  position: 'relative',
-  top: "-20px",
-  right: "1px"
-})
