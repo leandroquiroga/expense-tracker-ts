@@ -19,14 +19,9 @@ export const balance_chart = style({
 });
 
 export const balance_informacion = style({
-  textAlign: "left",
+  textAlign: "center",
   width: "100%",
-
-  "@media": {
-    "screen and (max-width: 768px)": {
-      textAlign: "center",
-    },
-  },
+  marginTop: '25px'
 });
 
 export const balance_information_title = style({
