@@ -33,6 +33,18 @@ const GlobalProvaider = ({ children }: GlobalProps): JSX.Element => {
     setArrSerialData(createSerialData());
   }, [state.transactions]);
 
+
+  // Simula si el usuario esta autenticado mediante su nombre almancenado en el localStorage. 
+  const isAuthenticated = (): boolean => {
+    const name = localStorage.getItem("name")
+      ? JSON.parse(localStorage.getItem("name") || "")
+      : "";
+    
+    (name) && true;
+
+    return false; 
+  }
+
   const createSerialData = () => {
     const serialDataMap = new Map<string, number>();
     let arrData = new Map<string, number>();
@@ -85,6 +97,7 @@ const GlobalProvaider = ({ children }: GlobalProps): JSX.Element => {
         newTransaction,
         setSelectOthers,
         handleDeleteTransaction,
+        isAuthenticated,
       }}>
       {children}
     </GlobalContext.Provider>
