@@ -12,15 +12,16 @@ export interface GlobalContextProps {
   setSelectOthers: Dispatch<SetStateAction<boolean>>;
   setSelectedValue: Dispatch<SetStateAction<string>>;
   handleDeleteTransaction: (id: string) => void;
+  isAuthenticated: () => boolean;
 }
 export interface GlobalProps {
   children: JSX.Element | JSX.Element[]
 }
 
 export type GlobalActions =
-  | { type: "setNameUser"; payload: string }
   | { type: "ADD_TRANSACTIONS"; payload: Transactions }
-  | { type: "DELETE_TRANSACTIONS", payload: string };
+  | { type: "DELETE_TRANSACTIONS", payload: string }
+  | { type: "LOGIN", payload: string };
   
 export interface GlobalState {
   name: string;
@@ -79,4 +80,8 @@ export interface GetUnitAndValueDate {
 export interface SerialData {
   value?: number;
   name?: string;
+}
+export interface PrivateRouteProps {
+  path?: string;
+  children?: ReactElement | ReactElement[];
 }

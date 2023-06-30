@@ -1,24 +1,42 @@
 import { createBrowserRouter } from "react-router-dom";
 
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import { FormComponent, Header, PageNotFound } from '../components';
-import { Dasboard } from '../pages/';
+import { Dasboard, Login } from '../pages/';
 
 const router = createBrowserRouter([
-  {    
+  {
     path: "/",
-    element: <Header/>,
+    element: (
+      <PrivateRoute path="/">
+        <Header />
+      </PrivateRoute>
+    ),
     errorElement: <PageNotFound />,
     children: [
       {
-        path: '',
-        element: <Dasboard />,
+        path: "",
+        element: (
+          <PrivateRoute path="/">
+            <Dasboard />
+          </PrivateRoute>
+        ),
       },
       {
         path: "new",
-        element: <FormComponent/>,
+        element: (
+          <PrivateRoute path="/new">
+            <FormComponent />
+          </PrivateRoute>
+        ),
         errorElement: <PageNotFound />,
       },
-    ]
+    ],
+  },
+  {
+    path: "/auth/login",
+    element: <Login />,
+    errorElement: <PageNotFound />,
   },
 ]);
 
