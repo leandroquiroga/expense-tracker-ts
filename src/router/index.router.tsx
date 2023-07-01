@@ -1,44 +1,28 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, RouteObject } from "react-router-dom";
 
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import { FormComponent, Header, PageNotFound } from '../components';
 import { Dasboard, Login } from '../pages/';
 
-const router = createBrowserRouter([
+
+const routes: RouteObject[] = [
   {
     path: "/",
-    element: (
-      <PrivateRoute path="/">
-        <Header />
-      </PrivateRoute>
-    ),
+    element: <PrivateRoute children={[<Header />, <Dasboard />]} />,
     errorElement: <PageNotFound />,
-    children: [
-      {
-        path: "",
-        element: (
-          <PrivateRoute path="/">
-            <Dasboard />
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "new",
-        element: (
-          <PrivateRoute path="/new">
-            <FormComponent />
-          </PrivateRoute>
-        ),
-        errorElement: <PageNotFound />,
-      },
-    ],
+  },
+  {
+    path: "/new",
+    element: <PrivateRoute children={[<Header />, <FormComponent />]} />,
+    errorElement: <PageNotFound />,
   },
   {
     path: "/auth/login",
     element: <Login />,
     errorElement: <PageNotFound />,
   },
-]);
+];
 
+const router = createBrowserRouter(routes)
 
-export default router
+export default router;

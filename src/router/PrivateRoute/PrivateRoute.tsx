@@ -1,10 +1,9 @@
-import { useNavigate, Route } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 import { useGlobalState } from "../../hooks/useGlobalState";
 import { PrivateRouteProps } from "../../interfaces";
 
 
-const PrivateRoute: React.FC<PrivateRouteProps> = ({path, children,}: PrivateRouteProps) => {
+const PrivateRoute: React.FC<PrivateRouteProps> = ({children,}: PrivateRouteProps) => {
   const { isAuthenticated } = useGlobalState();
   const navigate = useNavigate();
 
@@ -14,7 +13,12 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({path, children,}: PrivateRou
     navigate("/auth/login");
     return null;
   }
-  return <Route path={path} element={children} />;
+
+  return (
+    <>
+      {children}
+    </>
+  );
 };
 
-export default PrivateRoute
+export default PrivateRoute;

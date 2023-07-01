@@ -82,6 +82,5 @@ export interface SerialData {
   name?: string;
 }
 export interface PrivateRouteProps {
-  path?: string;
   children?: ReactElement | ReactElement[];
 }
