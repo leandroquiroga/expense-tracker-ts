@@ -42,10 +42,22 @@ export const card_optional = style({
 
 export const card_amount_increment = style({
   color: "#38c425",
-  fontWeight: "600"
+  fontWeight: "600",
+  
+  '@media': {
+    'screen and (max-width: 768px)': {
+      fontSize: "0.8rem",
+  },
+}
 });
 
 export const card_amount_decrement = style({
-  color: '#FF0000',
-  fontWeight: "600"
+  color: "#FF0000",
+  fontWeight: "600",
+  
+  "@media": {
+    "screen and (max-width: 768px)": {
+      fontSize: "0.8rem",
+    },
+  },
 });
