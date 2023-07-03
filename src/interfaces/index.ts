@@ -13,6 +13,7 @@ export interface GlobalContextProps {
   setSelectedValue: Dispatch<SetStateAction<string>>;
   handleDeleteTransaction: (id: string) => void;
   isAuthenticated: () => boolean;
+  signUp: (name: string) => void;
 }
 export interface GlobalProps {
   children: JSX.Element | JSX.Element[]
