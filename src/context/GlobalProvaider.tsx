@@ -39,10 +39,7 @@ const GlobalProvaider = ({ children }: GlobalProps): JSX.Element => {
     const name = localStorage.getItem("name")
       ? JSON.parse(localStorage.getItem("name") || "")
       : "";
-    
-    (name) && true;
-
-    return false; 
+    return name ? true: false
   }
 
   const createSerialData = () => {
@@ -82,11 +79,16 @@ const GlobalProvaider = ({ children }: GlobalProps): JSX.Element => {
     dispatch({ type: "ADD_TRANSACTIONS", payload: data });
   };
 
+
+  const signUp = (name: string) => {
+    dispatch({ type: "LOGIN", payload: name });
+  }
+
   return (
     <GlobalContext.Provider
       value={{
         transactions: state.transactions,
-        name: state.name,
+        name: localStorage.getItem("name") ? JSON.parse(localStorage.getItem("name") || "") : "",
         selectOthers,
         selectedValue,
         totalAmount,
@@ -98,6 +100,7 @@ const GlobalProvaider = ({ children }: GlobalProps): JSX.Element => {
         setSelectOthers,
         handleDeleteTransaction,
         isAuthenticated,
+        signUp,
       }}>
       {children}
     </GlobalContext.Provider>

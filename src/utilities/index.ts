@@ -30,6 +30,17 @@ export const validationForm = {
     .not(["Seleccione una opcion"], 'Escoja una opcion valida'),
 };
 
+
+export const validationLogin = {
+  name: Yup.string()
+    .min(3, "El nombre debe tener al menos 3 caracteres")
+    .max(25, "El nombre no puede tener mas de 25 caracteres")
+    .matches(/^[a-zA-ZñÑ\s]+$/, {
+      excludeEmptyString: true,
+      message: "El nombre deben ser solo texto",
+    })
+    .required("El nombre es obligatorio"),
+};
 export const amountNegative = (amount: number): boolean => (amount < 0) ? true : false;
 
 // Configuracion del tiempo desde que se actualizo el estado
@@ -75,12 +86,14 @@ export const createSerialDataMap = (
 ) => {
   let amountTotal: number;
 
+  // TODO: Solucionar bugs de que si el monto es negativo entonces que no lo sume si no lo reste.
+  // -35000 + -20000
   // Verificar si una propiedad se repite
   if (serialDataMap.has(options)) {
     // Si se repite - Verificar si el monto es negativo
     if (amount < 0) {
       // Sumar el monto negativo al total existente y asegurarse de que el valor final no sea menor que cero
-      amountTotal = Math.max(serialDataMap.get(options)! + amount, 0);
+      amountTotal = Math.max(serialDataMap.get(options)! + (-amount), 0);
       serialDataMap.set(options, amountTotal);
     } else {
       // Si es positivo, sumarlo al monto total

@@ -1,7 +1,5 @@
 import { style } from "@vanilla-extract/css";
 
-
-
 export const container_balance = style({
   margin: "10px auto",
   width: "90%",
@@ -21,7 +19,6 @@ export const balance_chart = style({
 export const balance_informacion = style({
   textAlign: "center",
   width: "100%",
-  marginTop: '25px'
 });
 
 export const balance_information_title = style({

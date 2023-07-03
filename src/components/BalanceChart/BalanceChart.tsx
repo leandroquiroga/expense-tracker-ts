@@ -6,7 +6,7 @@ export const BalanceChart = () => {
     const { categories, arrSerialData } = useGlobalState();
     const options = {
       title: {
-        left: "10px",
+        top: "0" ,
         text: "Dashboard",
         subtext: "Balance Total",
         x: "center",
@@ -22,6 +22,7 @@ export const BalanceChart = () => {
       },
       series: [
         {
+          top: "25px",
           name: "Balance Total",
           type: "pie",
           radius: "70%",
