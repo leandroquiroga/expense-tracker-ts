@@ -1,6 +1,5 @@
 import { ChangeEvent, Dispatch, ReactElement, SetStateAction } from "react";
 export interface GlobalContextProps {
-  name: string;
   transactions: Transactions[];
   selectOthers: boolean;
   selectedValue: string;
