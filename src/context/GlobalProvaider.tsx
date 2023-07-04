@@ -6,6 +6,7 @@ import { GlobalProps, SerialData } from "../interfaces";
 import { INITIAL_STATE, globalReducer } from "./globalReducer";
 import { Transactions } from '../interfaces/index';
 import { createSerialDataMap } from "../utilities";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 let data: Transactions;
 
@@ -17,6 +18,8 @@ const GlobalProvaider = ({ children }: GlobalProps): JSX.Element => {
   const [totalAmount, setTotalAmount] = useState(0);
   const [categories, setCategories] = useState<string[]>([]);
   const [arrSerialData, setArrSerialData] = useState<SerialData[] | undefined>();
+
+  const { getItemLocalStorage } = useLocalStorage("name")
 
   // Seteamos el localStorge
   useEffect(() => {
@@ -36,10 +39,10 @@ const GlobalProvaider = ({ children }: GlobalProps): JSX.Element => {
 
   // Simula si el usuario esta autenticado mediante su nombre almancenado en el localStorage. 
   const isAuthenticated = (): boolean => {
-    const name = localStorage.getItem("name")
-      ? JSON.parse(localStorage.getItem("name") || "")
+    const name = getItemLocalStorage()
+      ? JSON.parse(getItemLocalStorage() || "")
       : "";
-    return name ? true: false
+    return name ? true : false;
   }
 
   const createSerialData = () => {
@@ -88,7 +91,6 @@ const GlobalProvaider = ({ children }: GlobalProps): JSX.Element => {
     <GlobalContext.Provider
       value={{
         transactions: state.transactions,
-        name: localStorage.getItem("name") ? JSON.parse(localStorage.getItem("name") || "") : "",
         selectOthers,
         selectedValue,
         totalAmount,
