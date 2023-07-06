@@ -84,3 +84,10 @@ export interface SerialData {
 export interface PrivateRouteProps {
   children?: ReactElement | ReactElement[];
 }
+
+// Valores que almacena nuestro localStorage
+export type LocalStorageValue = string | null
+export interface LocalStorageHook {
+  getItemLocalStorage: () => LocalStorageValue;
+  setItemLocalStorage: (transaction: string, value: LocalStorageValue) => void ;
+}
