@@ -19,7 +19,7 @@ const GlobalProvaider = ({ children }: GlobalProps): JSX.Element => {
   const [categories, setCategories] = useState<string[]>([]);
   const [arrSerialData, setArrSerialData] = useState<SerialData[] | undefined>();
 
-  const { getItemLocalStorage } = useLocalStorage("name")
+  const { getItemLocalStorage, setItemLocalStorage } = useLocalStorage("name");
 
   // Seteamos el localStorge
   useEffect(() => {
@@ -31,7 +31,7 @@ const GlobalProvaider = ({ children }: GlobalProps): JSX.Element => {
     );
     // Mapea el arreglo de las transacciones y se queda con un arreglo de todas las categorias disponibles
     setCategories(state.transactions.map((transaction) => transaction.options));
-    localStorage.setItem("transactions", JSON.stringify(state.transactions));
+    setItemLocalStorage("transactions", JSON.stringify(state.transactions));
 
     setArrSerialData(createSerialData());
   }, [state.transactions]);
